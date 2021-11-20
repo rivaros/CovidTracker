@@ -11,12 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		201453B5EB874B789B44FDF0 /* Montserrat_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD6C0593474286A04F337D /* Montserrat_light.otf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-CovidTracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-CovidTracker.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-CovidTracker-CovidTrackerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-CovidTracker-CovidTrackerTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8B118BDA93DF44E3A3ADBD53 /* Montserrat_bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3BF14DDA55404E539BE12065 /* Montserrat_bold.otf */; };
 		8CC32C2B4C0D4DFFB18CCA49 /* Montserrat_italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAD9B56E242C4E0E808F47E0 /* Montserrat_italic.otf */; };
-		201453B5EB874B789B44FDF0 /* Montserrat_light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9ABD6C0593474286A04F337D /* Montserrat_light.otf */; };
 		BA4BDB53C5E34D09B5F2880E /* Montserrat.otf in Resources */ = {isa = PBXBuildFile; fileRef = C60FB88DFEAA4AB1BF9558B0 /* Montserrat.otf */; };
 /* End PBXBuildFile section */
 
@@ -41,17 +41,17 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = CovidTracker/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CovidTracker/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-CovidTracker-CovidTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CovidTracker-CovidTrackerTests.release.xcconfig"; path = "Target Support Files/Pods-CovidTracker-CovidTrackerTests/Pods-CovidTracker-CovidTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
+		3BF14DDA55404E539BE12065 /* Montserrat_bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Montserrat_bold.otf; path = ../src/assets/fonts/Montserrat_bold.otf; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-CovidTracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CovidTracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-CovidTracker-CovidTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CovidTracker-CovidTrackerTests.debug.xcconfig"; path = "Target Support Files/Pods-CovidTracker-CovidTrackerTests/Pods-CovidTracker-CovidTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CovidTracker/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9ABD6C0593474286A04F337D /* Montserrat_light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Montserrat_light.otf; path = ../src/assets/fonts/Montserrat_light.otf; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-CovidTracker-CovidTrackerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CovidTracker-CovidTrackerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAD9B56E242C4E0E808F47E0 /* Montserrat_italic.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Montserrat_italic.otf; path = ../src/assets/fonts/Montserrat_italic.otf; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-CovidTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CovidTracker.debug.xcconfig"; path = "Target Support Files/Pods-CovidTracker/Pods-CovidTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		C60FB88DFEAA4AB1BF9558B0 /* Montserrat.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Montserrat.otf; path = ../src/assets/fonts/Montserrat.otf; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-CovidTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CovidTracker.release.xcconfig"; path = "Target Support Files/Pods-CovidTracker/Pods-CovidTracker.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		3BF14DDA55404E539BE12065 /* Montserrat_bold.otf */ = {isa = PBXFileReference; name = "Montserrat_bold.otf"; path = "../src/assets/fonts/Montserrat_bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BAD9B56E242C4E0E808F47E0 /* Montserrat_italic.otf */ = {isa = PBXFileReference; name = "Montserrat_italic.otf"; path = "../src/assets/fonts/Montserrat_italic.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		9ABD6C0593474286A04F337D /* Montserrat_light.otf */ = {isa = PBXFileReference; name = "Montserrat_light.otf"; path = "../src/assets/fonts/Montserrat_light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C60FB88DFEAA4AB1BF9558B0 /* Montserrat.otf */ = {isa = PBXFileReference; name = "Montserrat.otf"; path = "../src/assets/fonts/Montserrat.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +102,18 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = CovidTracker;
+			sourceTree = "<group>";
+		};
+		2CB4255075F54F1094FA5F33 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3BF14DDA55404E539BE12065 /* Montserrat_bold.otf */,
+				BAD9B56E242C4E0E808F47E0 /* Montserrat_italic.otf */,
+				9ABD6C0593474286A04F337D /* Montserrat_light.otf */,
+				C60FB88DFEAA4AB1BF9558B0 /* Montserrat.otf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -157,18 +169,6 @@
 			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		2CB4255075F54F1094FA5F33 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				3BF14DDA55404E539BE12065 /* Montserrat_bold.otf */,
-				BAD9B56E242C4E0E808F47E0 /* Montserrat_italic.otf */,
-				9ABD6C0593474286A04F337D /* Montserrat_light.otf */,
-				C60FB88DFEAA4AB1BF9558B0 /* Montserrat.otf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 

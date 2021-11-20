@@ -12,6 +12,7 @@ target 'CovidTracker' do
     :hermes_enabled => false
   )
 
+
   target 'CovidTrackerTests' do
     inherit! :complete
     # Pods for testing
