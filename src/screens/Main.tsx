@@ -1,16 +1,16 @@
 import React, {useCallback, useEffect} from 'react';
 import {
-  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
   useColorScheme,
   View,
   FlatList,
-  Button,
   TextStyle,
   ViewStyle,
 } from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import Button from '../components/Button';
 import {useStore} from '../store';
 import Color from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -143,7 +143,7 @@ const Main: React.FC = () => {
           keyExtractor={country => country.CountryCode}
         />
         <View style={styles.horizontalFlex}>
-          <View style={styles.button}>
+          <View style={styles.buttonContainer}>
             <Button
               title={'see more'}
               onPress={() => {
@@ -151,7 +151,7 @@ const Main: React.FC = () => {
               }}
             />
           </View>
-          <View style={styles.button}>
+          <View style={styles.buttonContainer}>
             <Button title={'report case'} onPress={onAddNewCase} />
           </View>
         </View>
@@ -276,7 +276,11 @@ const Main: React.FC = () => {
 
   return (
     <SafeAreaView style={{...backgroundStyle, ...styles.mainContainer}}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar
+        translucent
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={Color.white}
+      />
       <View
         style={{
           backgroundColor: isDarkMode ? Color.black : Color.white,
@@ -299,8 +303,9 @@ const styles = StyleSheet.create({
   horizontalFlex: {
     flexDirection: 'row',
   },
-  button: {
+  buttonContainer: {
     flex: 1,
+    alignItems: 'center',
   },
   sectionContainer: {
     marginTop: 15,

@@ -4,8 +4,6 @@ import {
   View,
   TouchableOpacity,
   SafeAreaView,
-  StatusBar,
-  Platform,
   TextInput,
   useColorScheme,
 } from 'react-native';
@@ -53,19 +51,8 @@ const NavBar: React.FC<Props> = ({
     },
     [debouncedSearch],
   );
-
-  // Setting the bar style on Android only works on API level 23+
-  // https://github.com/facebook/react-native/blob/8ddf231306e3bd85be718940d04f11d23b570a62/ReactAndroid/src/main/java/com/facebook/react/modules/statusbar/StatusBarModule.java#L193
-  // https://developer.android.com/reference/android/os/Build.VERSION_CODES#M
-  const shouldUseDarkBar = Platform.OS === 'android' && Platform.Version < 23; // 23 = Marshmallow
-
   return (
     <SafeAreaView style={[!hideBottomBorder && styles.postsHeaderContainer]}>
-      <StatusBar
-        backgroundColor={shouldUseDarkBar ? Color.darkGrey : '#0000'}
-        barStyle="dark-content"
-        translucent
-      />
       <View style={styles.postsHeader}>
         <View style={styles.sideContainer}>
           <TouchableOpacity onPress={back}>

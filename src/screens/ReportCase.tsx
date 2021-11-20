@@ -4,10 +4,10 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Button,
   Alert,
   useColorScheme,
 } from 'react-native';
+import Button from '../components/Button';
 import {Picker} from '@react-native-picker/picker';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Color from '../styles/colors';
@@ -102,28 +102,30 @@ const ReportCase: React.FC = () => {
           </View>
         </View>
         {selectedCountry && selectedCaseType && (
-          <Button
-            title={'SUBMIT'}
-            onPress={() => {
-              addCountryCase(selectedCountry, selectedCaseType);
-              const countryReportedCases =
-                useStore.getState().countryReportedCases;
-              const countryName = countryList
-                .filter(country => country.ISO2 === selectedCountry)
-                .pop()?.Country;
-              Alert.alert(
-                `Country: ${countryName}`,
-                `Total reported cases by this app:\n new ${
-                  countryReportedCases[selectedCountry]?.NewConfirmed || 0
-                }\n deaths ${
-                  countryReportedCases[selectedCountry]?.NewDeaths || 0
-                }\n recovered ${
-                  countryReportedCases[selectedCountry]?.NewRecovered || 0
-                }`,
-                [{text: 'OK', onPress: () => navigation.goBack()}],
-              );
-            }}
-          />
+          <View style={styles.buttonContainer}>
+            <Button
+              title={'SUBMIT'}
+              onPress={() => {
+                addCountryCase(selectedCountry, selectedCaseType);
+                const countryReportedCases =
+                  useStore.getState().countryReportedCases;
+                const countryName = countryList
+                  .filter(country => country.ISO2 === selectedCountry)
+                  .pop()?.Country;
+                Alert.alert(
+                  `Country: ${countryName}`,
+                  `Total reported cases by this app:\n new ${
+                    countryReportedCases[selectedCountry]?.NewConfirmed || 0
+                  }\n deaths ${
+                    countryReportedCases[selectedCountry]?.NewDeaths || 0
+                  }\n recovered ${
+                    countryReportedCases[selectedCountry]?.NewRecovered || 0
+                  }`,
+                  [{text: 'OK', onPress: () => navigation.goBack()}],
+                );
+              }}
+            />
+          </View>
         )}
       </View>
     </View>
@@ -199,5 +201,9 @@ const styles = StyleSheet.create({
 
   pickerItem: {
     height: 120,
+  },
+
+  buttonContainer: {
+    alignItems: 'center',
   },
 });
