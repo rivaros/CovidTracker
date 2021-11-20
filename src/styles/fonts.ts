@@ -14,7 +14,7 @@ const styles = StyleSheet.create<Style>({
       fontWeight: '400',
     },
     android: {
-      fontFamily: 'Montserrat-Regular',
+      fontFamily: 'Montserrat_regular',
     },
   }),
 
@@ -24,7 +24,7 @@ const styles = StyleSheet.create<Style>({
       fontWeight: '300',
     },
     android: {
-      fontFamily: 'Montserrat-Light',
+      fontFamily: 'Montserrat_light',
     },
   }),
 
@@ -34,7 +34,7 @@ const styles = StyleSheet.create<Style>({
       fontStyle: 'italic',
     },
     android: {
-      fontFamily: 'Montserrat-Italic',
+      fontFamily: 'Montserrat_italic',
     },
   }),
 
@@ -44,7 +44,7 @@ const styles = StyleSheet.create<Style>({
       fontWeight: '700',
     },
     android: {
-      fontFamily: 'Montserrat-Bold',
+      fontFamily: 'Montserrat_bold',
     },
   }),
 });
