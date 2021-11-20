@@ -9,26 +9,12 @@ import {
   FlatList,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {getSummary, getStats, getWorldSummary} from '../api/covidApi';
+import {useSummaryPerCountryQuery} from '../api/covidApi';
 import {Stats, Summary, Global} from '../api/model/CovidAPI';
 import {useNavigation} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useQuery} from 'react-query';
 import {SummaryCountry} from '../api/model/CovidAPI';
-
-const getAllCountries = () => {
-  return getSummary().then((summary: Summary) => {
-    const countries = summary.Countries;
-    const countriesSorted = countries.sort((a, b) =>
-      a.TotalConfirmed < b.TotalConfirmed ? 1 : -1,
-    );
-    __DEV__ &&
-      countriesSorted.forEach(country => {
-        console.log(country.Country, ' has ', country.TotalConfirmed);
-      });
-    return countriesSorted;
-  });
-};
 
 const renderItem = ({item: country}: {item: SummaryCountry}) => (
   <View style={styles.item}>
@@ -45,14 +31,14 @@ const Countries: React.FC = () => {
     flex: 1,
   };
 
-  const {data: allCountries} = useQuery('all-countries', getAllCountries);
+  const {data: summaryPerCountry} = useSummaryPerCountryQuery();
 
   return (
     <SafeAreaView style={{...backgroundStyle, ...styles.mainContainer}}>
       <Button title={'Go Back'} onPress={navigation.goBack} />
       <FlatList
         style={styles.countryList}
-        data={allCountries}
+        data={summaryPerCountry}
         renderItem={renderItem}
         keyExtractor={country => country.ID}
       />
@@ -83,7 +69,7 @@ const styles = StyleSheet.create({
     //backgroundColor: 'red',
   },
   item: {
-    backgroundColor: '#f9c2ff',
+    // backgroundColor: '#f9c2ff',
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 16,

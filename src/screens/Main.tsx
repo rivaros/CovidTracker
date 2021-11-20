@@ -9,47 +9,18 @@ import {
   FlatList,
   Button,
 } from 'react-native';
-import {StackedAreaChart, YAxis, Grid} from 'react-native-svg-charts';
+import {StackedAreaChart, YAxis} from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
-import {useQuery} from 'react-query';
-import {getSummary, getStats, getWorldSummary} from '../api/covidApi';
-import {Stats, Summary, Global, SummaryCountry} from '../api/model/CovidAPI';
+import {
+  useSummaryPerCountryQuery,
+  useWorldSummaryChartQuery,
+} from '../api/covidApi';
+import {Global, SummaryCountry} from '../api/model/CovidAPI';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {useNavigation} from '@react-navigation/native';
 import {COUNTRIES_SCREEN} from '../navigation/constants';
 import StatRow from '../components/StatRow';
-
-const getTopCovidCountries = () => {
-  return getSummary().then((summary: Summary) => {
-    const countries = summary.Countries;
-    const countriesSorted = countries
-      .sort((a, b) => (a.TotalConfirmed < b.TotalConfirmed ? 1 : -1))
-      .slice(0, 5);
-    __DEV__ &&
-      countriesSorted.forEach(country => {
-        console.log(country.Country, ' has ', country.TotalConfirmed);
-      });
-    return countriesSorted;
-  });
-};
-
-const getWorldSummaryInfo = () => {
-  const to = new Date();
-  const from = new Date();
-  from.setMonth(from.getMonth() - 1);
-  return getWorldSummary(from, to).then((listOfStats: Global[]) => {
-    const sortedTimeSeries = listOfStats.sort((a, b) =>
-      a.Date > b.Date ? 1 : -1,
-    );
-    __DEV__ &&
-      sortedTimeSeries.forEach(stat => {
-        console.log(stat.NewConfirmed, ' at ', stat.Date);
-      });
-    return sortedTimeSeries;
-  });
-};
-
 interface covidDailyData {
   pointInTime: Date;
   confirmed: number;
@@ -91,31 +62,40 @@ const Main: React.FC = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     flex: 1,
   };
-  const {data: topCovidCountries} = useQuery(
-    'top-covid-countries',
-    getTopCovidCountries,
-  );
-  const {data: worldSummary} = useQuery(
-    'world-summary-info',
-    getWorldSummaryInfo,
-  );
+  const {data: summaryPerCountry} = useSummaryPerCountryQuery();
+  const to = new Date();
+  const from = new Date();
+  from.setMonth(from.getMonth() - 1);
+  const {data: worldSummaryChart} = useWorldSummaryChartQuery(from, to);
+
+  let top5Countries: SummaryCountry[] = [];
+  if (summaryPerCountry) {
+    top5Countries = summaryPerCountry
+      .sort((a, b) => (a.TotalConfirmed < b.TotalConfirmed ? 1 : -1))
+      .slice(0, 5);
+  }
 
   let dailyData: covidDailyData[] = [];
   let totalData: covidDailyData[] = [];
-  if (worldSummary) {
-    worldSummary.map(data => {
+  let latestWorldSummary: Global;
+  if (worldSummaryChart) {
+    const worldSummaryChartSorted = worldSummaryChart.sort((a, b) =>
+      a.Date > b.Date ? 1 : -1,
+    );
+    worldSummaryChartSorted.map(data => {
       dailyData.push({
-        pointInTime: data.Date,
+        pointInTime: new Date(data.Date),
         confirmed: data.NewConfirmed,
         deathes: data.NewDeaths,
       });
       totalData.push({
-        pointInTime: data.Date,
+        pointInTime: new Date(data.Date),
         confirmed: data.TotalConfirmed,
         deathes: data.TotalDeaths,
       });
-      console.log('WOW', dailyData[0].pointInTime);
     });
+    latestWorldSummary =
+      worldSummaryChartSorted[worldSummaryChartSorted.length - 1];
   }
 
   const colors = ['#333333', '#8800cc'];
@@ -138,7 +118,7 @@ const Main: React.FC = () => {
         <Section title="TOP COVID COUNTRIES">
           <FlatList
             style={styles.countryList}
-            data={topCovidCountries}
+            data={top5Countries}
             renderItem={renderItem}
             keyExtractor={country => country.ID}
           />
@@ -149,33 +129,33 @@ const Main: React.FC = () => {
             }}
           />
         </Section>
-        {worldSummary?.length && (
+        {latestWorldSummary && (
           <Section title="GLOBAL CASES" style={{flex: 2}}>
             <StatRow
               label={'New confirmed cases:'}
-              value={worldSummary[worldSummary.length - 1].NewConfirmed}
+              value={latestWorldSummary.NewConfirmed}
             />
             <StatRow
               label={'New deathes:'}
-              value={worldSummary[worldSummary.length - 1].NewDeaths}
+              value={latestWorldSummary.NewDeaths}
             />
             <StatRow
               label={'New recovered:'}
-              value={worldSummary[worldSummary.length - 1].NewRecovered}
+              value={latestWorldSummary.NewRecovered}
             />
             <StatRow
               label={'Total confirmed:'}
-              value={worldSummary[worldSummary.length - 1].TotalConfirmed}
+              value={latestWorldSummary.TotalConfirmed}
             />
             <StatRow
               label={'Total deathes:'}
-              value={worldSummary[worldSummary.length - 1].TotalDeaths}
+              value={latestWorldSummary.TotalDeaths}
             />
             <StatRow
               label={'Total recovered:'}
-              value={worldSummary[worldSummary.length - 1].TotalRecovered}
+              value={latestWorldSummary.TotalRecovered}
             />
-            <View style={styles.chartView}>
+            {/* <View style={styles.chartView}>
               <YAxis
                 data={dailyData.map(obj => obj.confirmed + obj.deathes)}
                 svg={{
@@ -187,16 +167,17 @@ const Main: React.FC = () => {
                   const valueInMln = value / 1000;
                   return `${valueInMln} k`;
                 }}
+                style={styles.chartYAxis}
               />
               <StackedAreaChart
-                style={{flex: 1, marginLeft: 16}}
+                style={styles.chart}
                 data={dailyData}
                 keys={keys}
                 colors={colors}
                 curve={shape.curveNatural}
                 showGrid={false}
                 svgs={svgs}
-                // xAccessor={({item}) => item.pointInTime.getTime()}
+                xAccessor={({item}) => item.pointInTime.getTime()}
               />
             </View>
             <View style={styles.chartView}>
@@ -212,9 +193,10 @@ const Main: React.FC = () => {
                   const valueInMln = value / 1000000;
                   return `${valueInMln} mln`;
                 }}
+                style={styles.chartYAxis}
               />
               <StackedAreaChart
-                style={{flex: 1, marginLeft: 16}}
+                style={styles.chart}
                 data={totalData}
                 keys={keys}
                 colors={colors}
@@ -222,7 +204,7 @@ const Main: React.FC = () => {
                 showGrid={false}
                 svgs={svgs}
               />
-            </View>
+            </View> */}
           </Section>
         )}
       </View>
@@ -262,7 +244,7 @@ const styles = StyleSheet.create({
     //backgroundColor: 'red',
   },
   item: {
-    backgroundColor: '#f9c2ff',
+    // backgroundColor: '#f9c2ff',
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 16,
@@ -276,6 +258,13 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
     marginBottom: 10,
+  },
+  chart: {
+    flex: 1,
+    marginLeft: 16,
+  },
+  chartYAxis: {
+    width: 40,
   },
 });
 
