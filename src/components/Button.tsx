@@ -27,7 +27,13 @@ const Button: React.FC<Props> = ({title, onPress}) => {
   };
 
   return (
-    <Pressable style={[styles.button, backgroundStyle]} onPress={onPress}>
+    <Pressable
+      style={({pressed}) => [
+        {opacity: pressed ? 0.5 : 1.0},
+        styles.button,
+        backgroundStyle,
+      ]}
+      onPress={onPress}>
       <Text style={[styles.text, textStyle]}>{title}</Text>
     </Pressable>
   );

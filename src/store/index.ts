@@ -9,6 +9,9 @@ import {Country} from '../api/model/CovidAPI';
 import {CaseRecords} from '../common/types/CaseRecords';
 
 interface AppState {
+  ready: boolean;
+  setReady: (val: boolean) => void;
+
   countrySortMode: number;
   setCountrySortMode: (sortMode: number) => void;
 
@@ -23,6 +26,9 @@ interface AppState {
 }
 
 export const useStore = create<AppState>(set => ({
+  ready: false,
+  setReady: val => set({ready: val}),
+
   countrySortMode: 0,
   setCountrySortMode: sortMode => set({countrySortMode: sortMode}),
 
