@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   Text,
@@ -13,13 +13,15 @@ import {Picker} from '@react-native-picker/picker';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Color from '../styles/colors';
 import fonts from '../styles/fonts';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
 import {useStore} from '../store';
 import {caseTypes, CASE_ACTIVE} from '../common/constants/caseTypes';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParamList} from '../navigation/types';
+import {POPUP_ADD_NEW_CASE} from '../navigation/constants';
 
-const ReportCase: React.FC = () => {
-  const navigation = useNavigation<StackNavigationProp<any>>();
+type Props = StackScreenProps<RootStackParamList, typeof POPUP_ADD_NEW_CASE>;
+
+const ReportCase: React.FC<Props> = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const countryList = useStore(state => state.countryList);
   const addCountryCase = useStore(state => state.addCountryCase);

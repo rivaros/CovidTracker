@@ -16,8 +16,13 @@ import NavBar from '../components/NavBar';
 import {useStore} from '../store';
 import {countrySortModes} from '../common/constants/countrySortModes';
 import {thousandFormatter} from '../common/funcs/thousandFormatter';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParamList} from '../navigation/types';
+import {COUNTRIES_SCREEN} from '../navigation/constants';
 
-const Countries: React.FC = () => {
+type Props = StackScreenProps<RootStackParamList, typeof COUNTRIES_SCREEN>;
+
+const Countries: React.FC<Props> = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const countrySortMode = useStore(state => state.countrySortMode);
   const countrySearchString = useStore(state => state.countrySearchString);
@@ -149,7 +154,6 @@ const Countries: React.FC = () => {
     <SafeAreaView style={{...backgroundStyle, ...styles.mainContainer}}>
       <NavBar
         hideBottomBorder={false}
-        title={'Countries'}
         updateSortMode={updateCountrySortMode}
         updateSearchString={updateSearchString}
       />

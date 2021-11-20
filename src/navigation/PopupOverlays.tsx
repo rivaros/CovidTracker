@@ -1,10 +1,11 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {TransitionPresets} from '@react-navigation/stack';
+import {TransitionPresets, createStackNavigator} from '@react-navigation/stack';
 import {POPUP_ADD_NEW_CASE} from './constants';
 import AddCase from '../screens/ReportCase';
 
-export const PopupOverlays = Stack => {
+type StackNavigatorType = ReturnType<typeof createStackNavigator>;
+
+export const PopupOverlays = (Stack: StackNavigatorType) => {
   return (
     <Stack.Group
       screenOptions={{

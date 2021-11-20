@@ -11,6 +11,8 @@ import Color from '../styles/colors';
 import fontStyle from '../styles/fonts';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../navigation/types';
 import SortBy from './SortBy';
 import {countrySortModes} from '../common/constants/countrySortModes';
 import debounce from 'lodash/debounce';
@@ -28,7 +30,7 @@ const NavBar: React.FC<Props> = ({
   updateSortMode,
   updateSearchString,
 }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const inputRef = useRef(null);
   const isDarkMode = useColorScheme() === 'dark';
 

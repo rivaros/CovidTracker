@@ -15,9 +15,13 @@ import {useStore} from '../store';
 import Color from '../styles/colors';
 import fonts from '../styles/fonts';
 import {thousandFormatter} from '../common/funcs/thousandFormatter';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {COUNTRIES_SCREEN, POPUP_ADD_NEW_CASE} from '../navigation/constants';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParamList} from '../navigation/types';
+import {
+  MAIN_SCREEN,
+  COUNTRIES_SCREEN,
+  POPUP_ADD_NEW_CASE,
+} from '../navigation/constants';
 import {StackedAreaChart, YAxis} from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import {
@@ -57,13 +61,14 @@ const Section: React.FC<SectionProps> = ({children, title, style}) => {
   );
 };
 
-const Main: React.FC = () => {
-  const navigation = useNavigation<StackNavigationProp<any>>();
+type Props = StackScreenProps<RootStackParamList, typeof MAIN_SCREEN>;
+
+const Main: React.FC<Props> = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const setCountryList = useStore(state => state.setCountryList);
 
   const onAddNewCase = useCallback(() => {
-    navigation.push(POPUP_ADD_NEW_CASE);
+    navigation.navigate(POPUP_ADD_NEW_CASE);
   }, [navigation]);
 
   const backgroundStyle: ViewStyle = {
@@ -147,7 +152,7 @@ const Main: React.FC = () => {
             <Button
               title={'see more'}
               onPress={() => {
-                navigation.push(COUNTRIES_SCREEN);
+                navigation.navigate(COUNTRIES_SCREEN);
               }}
             />
           </View>
