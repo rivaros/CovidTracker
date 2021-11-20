@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/coronavirus" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="COVID CASES TRACKER"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txtDemoBy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="600dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Demo by Ross ;-)"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>
