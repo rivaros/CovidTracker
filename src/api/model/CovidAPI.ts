@@ -103,7 +103,7 @@ export interface Global {
   Date: Date;
 }
 
-export interface Countries {
+export interface Country {
   Country: string;
   Slug: string;
   ISO2: string;

@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {MAIN_SCREEN, COUNTRIES_SCREEN} from './constants';
 import MainScreen from '../screens/Main';
 import CountriesScreen from '../screens/Countries';
+import {PopupOverlays} from './PopupOverlays';
 
 // ----- Main App navigation
 const AppStack = createStackNavigator();
@@ -27,6 +28,8 @@ export const MainNavigator: React.FC = () => {
             headerShown: false,
           }}
         />
+
+        {PopupOverlays(AppStack)}
       </AppStack.Navigator>
     </NavigationContainer>
   );
