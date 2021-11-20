@@ -8,10 +8,11 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {QueryClientProvider, QueryClient} from 'react-query';
 import {MainNavigator} from './src/navigation/MainNavigator';
+import SplashScreen from 'react-native-splash-screen';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,6 +23,10 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  });
+
   return (
     <QueryClientProvider client={queryClient} contextSharing>
       <MainNavigator />
