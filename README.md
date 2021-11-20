@@ -1,3 +1,12 @@
+
+IOS:
+
+<img width="200" alt="screen1" src="https://user-images.githubusercontent.com/1242369/142731540-793dbc25-660c-47e2-970e-4841bfd196ec.png"><img width="200" alt="screen1" src="https://user-images.githubusercontent.com/1242369/142731550-d5917c5a-b916-4719-acad-4fef4205e7c8.png"><img width="200" alt="screen1" src="https://user-images.githubusercontent.com/1242369/142731551-93b7da05-fee7-47ef-acb5-f9a8d0e1895c.png"><img width="200" alt="screen1" src="https://user-images.githubusercontent.com/1242369/142731553-51ffaffc-c239-4893-aa80-bd88c2c8eddb.png"><img width="200" alt="screen1" src="https://user-images.githubusercontent.com/1242369/142731557-f9931702-90fd-4906-8b14-f3e6883c9584.png">
+
+ANDROID:
+
+<img width="200" alt="Screenshot 2021-11-20 at 19 21 27" src="https://user-images.githubusercontent.com/1242369/142731822-59d482a2-649b-4bed-95c5-3b76fb2d456b.png"><img width="200" alt="Screenshot 2021-11-20 at 19 22 23" src="https://user-images.githubusercontent.com/1242369/142731824-41028c33-e8fe-4141-8166-d48064b94ffd.png">
+
 # Covid Tracker Mobile App
 
 The following help 
