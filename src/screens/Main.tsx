@@ -135,7 +135,7 @@ const Main: React.FC = () => {
     }
 
     return (
-      <Section title="TOP COUNTRIES BY COVID CASES" style={{flex: 2}}>
+      <Section title="TOP COUNTRIES BY COVID CASES" style={{height: 300}}>
         <FlatList
           style={styles.countryList}
           data={top5Countries}
@@ -211,7 +211,7 @@ const Main: React.FC = () => {
     }
 
     return (
-      <Section title="GLOBAL STATS" style={{flex: 3}}>
+      <Section title="GLOBAL STATS" style={{flex: 1}}>
         <StatRow label={'New confirmed:'} value={latest.NewConfirmed} />
         <StatRow label={'New deathes:'} value={latest.NewDeaths} />
         <StatRow label={'Total confirmed:'} value={latest.TotalConfirmed} />
@@ -279,7 +279,7 @@ const Main: React.FC = () => {
       <StatusBar
         translucent
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={Color.white}
+        backgroundColor={isDarkMode ? Color.black : Color.white}
       />
       <View
         style={{
@@ -301,6 +301,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   horizontalFlex: {
+    paddingTop: 20,
     flexDirection: 'row',
   },
   buttonContainer: {
@@ -310,7 +311,7 @@ const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 15,
     paddingHorizontal: 24,
-    flex: 1,
+    paddingBottom: 10,
   },
   sectionContent: {
     flex: 1,
@@ -318,7 +319,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     ...fonts.bold,
     textAlign: 'center',
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
   sectionDescription: {
     marginTop: 8,
@@ -328,10 +329,7 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
-  countryList: {
-    flex: 1,
-    // backgroundColor: 'red',
-  },
+  countryList: {},
   countryContainer: {
     padding: 5,
     marginVertical: 5,

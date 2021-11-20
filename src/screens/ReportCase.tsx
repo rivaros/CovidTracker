@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Alert,
   useColorScheme,
+  Platform,
 } from 'react-native';
 import Button from '../components/Button';
 import {Picker} from '@react-native-picker/picker';
@@ -60,7 +61,13 @@ const ReportCase: React.FC = () => {
           <View style={styles.sectionHeading}>
             <Text style={styles.sectionHeadingText}>Country</Text>
           </View>
-          <View style={styles.pickerContainer}>
+          <View
+            style={[
+              styles.pickerContainer,
+              isDarkMode
+                ? {backgroundColor: Color.darkerGrey}
+                : {backgroundColor: Color.darkGrey},
+            ]}>
             <Picker
               style={styles.picker}
               itemStyle={styles.pickerItem}
@@ -71,6 +78,7 @@ const ReportCase: React.FC = () => {
                   label={country.Country}
                   value={country.ISO2}
                   key={country.ISO2}
+                  style={styles.pickerItemChild}
                 />
               ))}
             </Picker>
@@ -85,7 +93,13 @@ const ReportCase: React.FC = () => {
           <View style={styles.sectionHeading}>
             <Text style={styles.sectionHeadingText}>Case</Text>
           </View>
-          <View style={styles.pickerContainer}>
+          <View
+            style={[
+              styles.pickerContainer,
+              isDarkMode
+                ? {backgroundColor: Color.darkerGrey}
+                : {backgroundColor: Color.darkGrey},
+            ]}>
             <Picker
               style={styles.picker}
               itemStyle={styles.pickerItem}
@@ -96,6 +110,7 @@ const ReportCase: React.FC = () => {
                   label={caseTypes[caseTypeKey]}
                   value={caseTypeKey}
                   key={caseTypeKey}
+                  style={styles.pickerItemChild}
                 />
               ))}
             </Picker>
@@ -192,15 +207,33 @@ const styles = StyleSheet.create({
 
   pickerContainer: {
     overflow: 'hidden',
+    borderRadius: 10,
   },
 
-  picker: {
-    height: 100,
-    width: '100%',
-  },
+  picker: Platform.select<any>({
+    ios: {
+      height: 130,
+      width: '100%',
+    },
+    android: {
+      height: 50,
+      width: '100%',
+    },
+  }),
 
-  pickerItem: {
-    height: 120,
+  pickerItem: Platform.select<any>({
+    ios: {
+      height: 130,
+      backgroundColor: Color.lightGrey,
+    },
+    android: {
+      height: 120,
+    },
+  }),
+
+  pickerItemChild: {
+    color: Color.black,
+    backgroundColor: Color.lightishGrey,
   },
 
   buttonContainer: {

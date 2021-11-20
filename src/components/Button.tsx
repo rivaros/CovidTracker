@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Pressable,
-  View,
   Text,
   StyleSheet,
   useColorScheme,
@@ -20,7 +19,7 @@ const Button: React.FC<Props> = ({title, onPress}) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle: ViewStyle = {
-    backgroundColor: isDarkMode ? Color.darkerGrey : Color.white,
+    backgroundColor: isDarkMode ? Color.darkerGrey : Color.lightGrey,
   };
   const textStyle: TextStyle = {
     color: isDarkMode ? Color.white : Color.dark,
